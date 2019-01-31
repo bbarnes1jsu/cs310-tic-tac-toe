@@ -20,10 +20,14 @@ public class TicTacToeView {
         
         /* Prompt the player to enter the row and the column of their next move.
            Return as a TicTacToeMove object. */
+        System.out.println("Enter the row and the column of your next move: ")
+        int row = keyboard.getNextInt();
+        int col = keyboard.getNextInt();
+        TicTacToeMove getRow = newTicTacToeMove(row);
+        TicTacToeMove getCol = newTicTacToeMove(col);
+        getRow.start();
+        getCol.start();
         
-        // INSERT YOUR CODE HERE
-
-        return null; // remove this line later!
 
     }
 
