@@ -75,8 +75,8 @@ public class TicTacToeModel {
 
         /* Initialize board by filling every square with empty marks */
         
-        for(int i = 0; i < 0; i++){
-            for(int h = 0; h < 0;h++){
+        for(int i = 0; i < width; i++){
+            for(int h = 0; h < width;h++){
                 board[i][h] = Mark.EMPTY;
             }
         }
@@ -91,9 +91,23 @@ public class TicTacToeModel {
            toggle "xTurn" from true to false (or vice-versa) to switch to the
            other player before returning TRUE.  Otherwise, return FALSE. */
         
-        // INSERT YOUR CODE HERE
+        if(isValidSquare(row,col)){
+            if(isSquareMakred(row,col)){
+                if(xTurn){
+                    board[row][col]= Mark.X;
+                }
+                else{
+                    board[row][col]= Mark.O;
+                }
+                xTurn = !xTurn;
+                return true;
+            }
+        }
+        else{
+            return false;
+        }
         
-        return false; // remove this line later!
+        
         
     }
 	
