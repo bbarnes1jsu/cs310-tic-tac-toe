@@ -20,14 +20,23 @@ public class TicTacToeView {
         
         /* Prompt the player to enter the row and the column of their next move.
            Return as a TicTacToeMove object. */
-        System.out.println("Enter the row and the column of your next move: ");
+        if(xTurn){
+            System.out.println("Player 1 (X) Move: ");
+        }
+        else{
+            System.out.println("Player 2 (O) Move: ");
+        }
+        
+        System.out.println("Enter the row and the column numbers, speperated by a space: ");
+
         int row = keyboard.getNextInt(); //Retrieves next Keyboard Int Input and stores it in row
         int col = keyboard.getNextInt(); //Retrieves next Keyboard Int Input and stores it in col
+
         TicTacToeMove getRow = newTicTacToeMove(row); //Call method from TicTacToeMove
         TicTacToeMove getCol = newTicTacToeMove(col); //Call method from TicTacToeMove
+
         getRow.start();
         getCol.start();
-        
 
     }
 
