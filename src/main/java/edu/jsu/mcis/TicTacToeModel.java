@@ -90,9 +90,9 @@ public class TicTacToeModel {
            specified location is valid, make a mark for the current player, then
            toggle "xTurn" from true to false (or vice-versa) to switch to the
            other player before returning TRUE.  Otherwise, return FALSE. */
-        
+        boolean check = false;
         if(isValidSquare(row,col)){
-            if(isSquareMakred(row,col)){
+            if(!isSquareMarked(row,col)){
                 if(xTurn){
                     board[row][col]= Mark.X;
                 }
@@ -100,8 +100,9 @@ public class TicTacToeModel {
                     board[row][col]= Mark.O;
                 }
                 xTurn = !xTurn;
-                return true;
+                check = true;
             }
+            return check;
         }
         else{
             return false;
@@ -115,7 +116,7 @@ public class TicTacToeModel {
         
         /* Return TRUE if the specified location is within the bounds of the board */
         
-        if(isValidSquare(row,col)){
+        if((row < width) && (row >= 0) && (col < width) && (col >= 0)){
             return true;
         }
         else{
@@ -127,11 +128,11 @@ public class TicTacToeModel {
     private boolean isSquareMarked(int row, int col) {
         
         /* Return TRUE if the square at specified location is marked */
-        if(isSquareMarked(row,col)){
-            return true;
+        if(board[row][col] == Mark.EMPTY){
+            return false;
         }
         else{
-            return false;
+            return true;
         }
 
             
@@ -141,12 +142,8 @@ public class TicTacToeModel {
         
         /* Return the mark from the square at the specified location */
         
-        if(getMark(row,col)){
-            return true;
-        }
-        else{
-            return null;
-        }
+        Mark area = board[row][col];
+        return area;
     
             
     }
@@ -177,22 +174,73 @@ public class TicTacToeModel {
         
         /* Check the squares of the board to see if the specified mark is the
            winner */
+        // Checks vertically 
+        int count = 0;
+        for(int a = 0; a < width; a++){
+            count = 0;
+            for(int b = 0; b < width; b++){
+                if(getMark(a,b) == mark){
+                    count++;
+                }
+
+            }
+            if(count == width){
+            return true;
+            }    
+        }
         
-        if(){
-            
+        //Checks horizontally
+        for(int k = 0; k < width; k++){
+            count = 0;
+            for( int l = 0; l < width; l++){
+                if(getMark(k,l) == mark){
+                    count++;
+                }
+                if(count == width){
+                    return true;
+                }
+            }
+        }
+        
+        //Checks Diagonally
+        for(int m = 0; m < width; m++){
+            if(getMark(m,m) == mark){
+                count++;
+            }
+        }
+        if(count == width){
+            return true;
         }
 
-        return false; // remove this line later!
-
+        //Checks Diagonally the other way
+        count = 0;
+        for(int n = 0; n < width; n++){
+            if(getMark(n,width-n-1)==mark){
+                count++;
+            }
+        }
+        if(count==width){
+            return true;
+        }
+        return false;
     }
 	
     private boolean isTie() {
         
         /* Check the squares of the board to see if the game is a tie */
         
-        // INSERT YOUR CODE HERE
-
-        return false; // remove this line later!
+        if(isMarkWin(Mark.X)||isMarkWin(Mark.O)){
+            return false;
+        }
+        for (int o = 0; o < width; o++) {
+            for(int p = 0;p < width; p++) {
+                if (getMark(o,p) == Mark.EMPTY) {
+                    return false;
+                }
+            }
+        }
+        return true;
+        
         
     }
 
