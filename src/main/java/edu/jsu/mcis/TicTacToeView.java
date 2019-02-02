@@ -29,11 +29,14 @@ public class TicTacToeView {
         
         System.out.println("Enter the row and the column numbers, speperated by a space: ");
 
-        int row = keyboard.getNextInt(); //Retrieves next Keyboard Int Input and stores it in row
-        int col = keyboard.getNextInt(); //Retrieves next Keyboard Int Input and stores it in col
+        int a = keyboard.getNextInt(); //Retrieves next Keyboard Int Input and stores it in row
+        int b = keyboard.getNextInt(); //Retrieves next Keyboard Int Input and stores it in col
 
-        TicTacToeMove getRow = newTicTacToeMove(row); //Call method from TicTacToeMove
-        TicTacToeMove getCol = newTicTacToeMove(col); //Call method from TicTacToeMove
+        //TicTacToeMove.getRow(a);
+        //TicTacToeMove.getCol(b);
+
+        TicTacToeMove.getRow = newTicTacToeMove(row); //Call method from TicTacToeMove
+        TicTacToeMove.getCol = newTicTacToeMove(col); //Call method from TicTacToeMov
 
         getRow.start();
         getCol.start();
