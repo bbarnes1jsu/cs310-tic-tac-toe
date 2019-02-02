@@ -275,7 +275,7 @@ public class TicTacToeModel {
         
         /* Output the board contents as a string (see examples) */
         
-        // INSERT YOUR CODE HERE
+        System.out.println("\n\n" + board);
         
         return output.toString();
         
