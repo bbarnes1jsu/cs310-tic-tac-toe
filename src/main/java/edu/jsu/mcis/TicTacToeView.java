@@ -14,32 +14,29 @@ public class TicTacToeView {
         
         keyboard = new Scanner(System.in);
         
+        
     }
 	
     public TicTacToeMove getNextMove(boolean isXTurn) {
         
         /* Prompt the player to enter the row and the column of their next move.
            Return as a TicTacToeMove object. */
-        if(isXTurn()){
+
+        /*if(isXTurn()){
             System.out.println("Player 1 (X) Move: ");
         }
         else{
             System.out.println("Player 2 (O) Move: ");
-        }
+        } */
         
         System.out.println("Enter the row and the column numbers, speperated by a space: ");
 
-        int a = keyboard.getNextInt(); //Retrieves next Keyboard Int Input and stores it in row
-        int b = keyboard.getNextInt(); //Retrieves next Keyboard Int Input and stores it in col
+        int row = Integer.parseInt(keyboard.next()); //Retrieves next Keyboard Int Input and stores it
+        int col = Integer.parseInt(keyboard.next()); //Retrieves next Keyboard Int Input and stores it
 
-        //TicTacToeMove.getRow(a);
-        //TicTacToeMove.getCol(b);
+        TicTacToeMove move = new TicTacToeMove(row,col);
 
-        TicTacToeMove.getRow = newTicTacToeMove(row); //Call method from TicTacToeMove
-        TicTacToeMove.getCol = newTicTacToeMove(col); //Call method from TicTacToeMov
-
-        getRow.start();
-        getCol.start();
+        return move;
 
     }
 
