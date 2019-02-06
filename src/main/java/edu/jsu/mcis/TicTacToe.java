@@ -8,7 +8,7 @@ public class TicTacToe {
         
         /* Set initial size of game board (default is 3x3) */
 
-        int width = DEFAULT_WIDTH;
+        int width = 5;
         
         /* If a different size is provided as an argument, use it instead */
 

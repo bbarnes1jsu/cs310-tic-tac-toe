@@ -275,16 +275,15 @@ public class TicTacToeModel {
         StringBuilder output = new StringBuilder("  ");
         
         /* Output the board contents as a string (see examples) */
-        output.append("\n\n");
-        output.append("  ");
+        
     
-
+        //Will Create Numbers Across
         for(int h = 0; h < width; h++){
             output.append(h);
         }
 
-        output.append("\n");
-
+        
+        // Will create the board
         for(int i = 0; i < width; ++i){
             output.append("\n");
             output.append(i + " ");
