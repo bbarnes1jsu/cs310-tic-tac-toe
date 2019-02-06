@@ -193,7 +193,7 @@ public class TicTacToeModel {
         for(int k = 0; k < width; k++){
             count = 0;
             for( int l = 0; l < width; l++){
-                if(getMark(k,l) == mark){
+                if(getMark(l,k) == mark){
                     count++;
                 }
                 if(count == width){
@@ -203,6 +203,7 @@ public class TicTacToeModel {
         }
         
         //Checks Diagonally
+        count = 0;
         for(int m = 0; m < width; m++){
             if(getMark(m,m) == mark){
                 count++;
@@ -215,7 +216,7 @@ public class TicTacToeModel {
         //Checks Diagonally the other way
         count = 0;
         for(int n = 0; n < width; n++){
-            if(getMark(n,width-n-1)==mark){
+            if(getMark(width-n-1,n)==mark){
                 count++;
             }
         }
@@ -274,13 +275,24 @@ public class TicTacToeModel {
         StringBuilder output = new StringBuilder("  ");
         
         /* Output the board contents as a string (see examples) */
-        
+        output.append("\n\n");
+        output.append("  ");
+    
+
+        for(int h = 0; h < width; h++){
+            output.append(h);
+        }
+
+        output.append("\n");
+
         for(int i = 0; i < width; ++i){
             output.append("\n");
+            output.append(i + " ");
             for(int n = 0; n < width; ++n){
                 output.append(board[i][n]);                
             }
         }
+        output.append("\n");
         return output.toString();
         
     }
