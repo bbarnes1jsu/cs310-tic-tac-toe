@@ -1,6 +1,8 @@
 package edu.jsu.mcis;
 
-public class TicTacToeController {
+import java.awt.event.ActionListener;
+
+public class TicTacToeController implements ActionListener {
 
     private final TicTacToeModel model;
     private final TicTacToeView view;
@@ -16,7 +18,7 @@ public class TicTacToeController {
         
     }
 
-    public void start() {
+    public void start(){
     
         /* MAIN LOOP (repeats until game is over) */
 
@@ -27,8 +29,10 @@ public class TicTacToeController {
 
         while(!model.isGameover()){
             view.showBoard(model.toString());
+            
 
             TicTacToeMove move =  view.getNextMove(model.isXTurn());
+            view.updateSquares();
 
             while(!model.makeMark(move.getRow(), move.getCol())){
                 view.showInputError();
@@ -37,7 +41,7 @@ public class TicTacToeController {
             }
 
         }
-
+        
                 
         
         /* After the game is over, show the final board and the winner */
@@ -47,5 +51,19 @@ public class TicTacToeController {
         view.showResult(model.getResult().toString());
         
     }
+
+    public String getMarkAsString(int row, int col) {        
+        return (model.getMark(row, col).toString());        
+    }
+    
+    public TicTacToeView getView() {        
+        return view;        
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        // INSERT YOUR CODE HERE
+    }
+
 
 }

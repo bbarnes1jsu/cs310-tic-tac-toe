@@ -8,7 +8,7 @@ public class TicTacToe {
         
         /* Set initial size of game board (default is 3x3) */
 
-        int width = 5;
+        int width = DEFAULT_WIDTH;
         
         /* If a different size is provided as an argument, use it instead */
 
@@ -27,7 +27,12 @@ public class TicTacToe {
         
         /* Start Main Loop */
         
-        controller.start();
+        JFrame win = new JFrame("Tic-Tac-Toe");
+        win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
+        win.add(controller.getView());
+        win.pack();
+        win.setVisible(true);
+
         
     }
     
