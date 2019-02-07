@@ -46,16 +46,30 @@ public class TicTacToeView extends JPanel {
 
         /* Refresh the GUI with updated data from the Model (via the Controller) */
 
-        board[row][col].addActionListener(controller);
+        int width = model.getWidth();
+        
+        
+        for(int a = 0; a < width; a++) {
+            for(int b = 0; b < width; b++) {
+                board[a][b].setText(controller.getMark(a,b).toString());
+            }
+        }
 
     }
     
     public void disableSquares() {
 
         /* Disable buttons (to disallow input after game is over) */
-    
-        if(controller.isGameOver()){
-            squaresPanel.setEnabled(false);
+        int width = model.getWidth();
+        
+
+        if(model.isGameover()) {
+            showResult((model.getResult().toString()));
+            for(int i = 0; i < width; i++){
+                for(int j = 0; j < width; j++){
+                    board[i][j].setEnabled(false);
+                }
+            }
         }
             
     }
