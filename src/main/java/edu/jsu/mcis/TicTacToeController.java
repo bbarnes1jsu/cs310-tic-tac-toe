@@ -26,7 +26,7 @@ public class TicTacToeController implements ActionListener {
            "getNextMove()" to get the next move from the player.  Enter
            the move (using the Model's "makeMark()", or display an error
            using the View's "showInputError()" if the move is invalid. */
-
+        /*
         while(!model.isGameover()){
             view.showBoard(model.toString());
             
@@ -46,9 +46,9 @@ public class TicTacToeController implements ActionListener {
         
         /* After the game is over, show the final board and the winner */
 
-        view.showBoard(model.toString());
+        /*view.showBoard(model.toString());
 
-        view.showResult(model.getResult().toString());
+        view.showResult(model.getResult().toString()); */
         
     }
 
@@ -62,13 +62,19 @@ public class TicTacToeController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent event) {
-        String button = ((JButton) event.getSource()).getName(); // Get button name
+        JButton button = ((JButton) event.getSource()); // Get button name
+        String squareSpot = button.getName();
+        squareSpot = squareSpot.replaceFirst("Square","");
         
-        
-        int row = Integer.parseInt(button.substring(6,7));
-        int col = Integer.parseInt(button.substring(7,8));
+        String[] location = squareSpot.spilt("");
+        int row = Integer.parseInt(location(0));
+        int col = Integer.parseInt(location(1));
         model.makeMark(row, col);
         view.updateSquares();
+        if(model.gameIsOver()){
+            view.disableSquares();
+             view.showResult(model.getResult().toString());
+        }
     }
 
 
