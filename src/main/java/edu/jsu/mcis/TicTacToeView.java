@@ -10,11 +10,12 @@ public class TicTacToeView extends JPanel {
     private final JButton[][] board;
     private final JPanel squaresPanel;
     private final JLabel resultLabel;
+    public int width;
 
     public TicTacToeView(TicTacToeController controller, int width) {
 
         this.controller = controller;
-
+        this.width = width;
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         board = new JButton[width][width];
         squaresPanel = new JPanel(new GridLayout(width,width));
@@ -37,7 +38,7 @@ public class TicTacToeView extends JPanel {
 
         this.add(squaresPanel);
         this.add(resultLabel);
-        
+
         resultLabel.setText("Welcome to Tic-Tac-Toe!");
 
     }
@@ -45,14 +46,11 @@ public class TicTacToeView extends JPanel {
     public void updateSquares() {
 
         /* Refresh the GUI with updated data from the Model (via the Controller) */
-
-        int width = model.getWidth();
-        
         
         for(int a = 0; a < width; a++) {
             for(int b = 0; b < width; b++) {
-                if(!controller.getMarkasString(a,b).equals("-")){
-                    board[a][b].setText(controller.getMarkasString(a,b));
+                if(!controller.getMarkAsString(a,b).equals("-")){
+                    board[a][b].setText(controller.getMarkAsString(a,b));
                 }
             }
         }
@@ -62,7 +60,6 @@ public class TicTacToeView extends JPanel {
     public void disableSquares() {
 
         /* Disable buttons (to disallow input after game is over) */
-        int width = model.getWidth();
         
         for(int i = 0; i < width; i++){
             for(int j = 0; j < width; j++){

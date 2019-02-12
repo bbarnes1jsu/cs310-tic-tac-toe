@@ -16,7 +16,7 @@ public class TicTacToeController implements ActionListener {
         /* Initialize model, view, and width */
 
         model = new TicTacToeModel(width);
-        view = new TicTacToeView(width);
+        view = new TicTacToeView(this,width);
         
     }
 
@@ -68,14 +68,14 @@ public class TicTacToeController implements ActionListener {
         String squareSpot = button.getName();
         squareSpot = squareSpot.replaceFirst("Square","");
         
-        String[] location = squareSpot.spilt("");
-        int row = Integer.parseInt(location(0));
-        int col = Integer.parseInt(location(1));
+        String[] location = squareSpot.split("");
+        int row = Integer.parseInt(location[0]);
+        int col = Integer.parseInt(location[1]);
         model.makeMark(row, col);
         view.updateSquares();
-        if(model.gameIsOver()){
+        if(model.isGameover()){
             view.disableSquares();
-             view.showResult(model.getResult().toString());
+            view.showResult(model.getResult().toString().toUpperCase());
         }
     }
 
