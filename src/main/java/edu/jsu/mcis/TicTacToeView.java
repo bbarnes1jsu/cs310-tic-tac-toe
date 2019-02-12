@@ -51,8 +51,8 @@ public class TicTacToeView extends JPanel {
         
         for(int a = 0; a < width; a++) {
             for(int b = 0; b < width; b++) {
-                if(!controller.getMark(a,b).toString().equals("-")){
-                    board[a][b].setText(controller.getMark(a,b).toString());
+                if(!controller.getMarkasString(a,b).equals("-")){
+                    board[a][b].setText(controller.getMarkasString(a,b));
                 }
             }
         }

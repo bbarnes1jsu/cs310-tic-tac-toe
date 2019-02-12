@@ -1,5 +1,7 @@
 package edu.jsu.mcis;
-
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TicTacToeController implements ActionListener {
@@ -62,7 +64,7 @@ public class TicTacToeController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent event) {
-        JButton button = ((JButton) event.getSource()); // Get button name
+        JButton button = ((JButton)event.getSource()); // Get button name
         String squareSpot = button.getName();
         squareSpot = squareSpot.replaceFirst("Square","");
         
